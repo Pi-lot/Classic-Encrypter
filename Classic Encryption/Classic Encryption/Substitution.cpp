@@ -1,18 +1,15 @@
 #include "Substitution.h"
 
-const int aSize = 2;
-
 string* Substitution::Encrypt() {
-	string cipherText[aSize];
+	string cipherText[SIZE];
 	return cipherText;
 }
 
 string* Substitution::Encrypt(string Key) {
-	string cipherText[aSize];
+	string cipherText[SIZE];
 	return cipherText;
 }
 
-string* Substitution::Decrypt(string message) {
-	string plainText[aSize];
-	return plainText;
+string Substitution::Decrypt(string message[SIZE]) {
+	return string();
 }
