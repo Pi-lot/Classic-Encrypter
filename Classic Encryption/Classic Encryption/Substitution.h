@@ -1,13 +1,15 @@
 #pragma once
 #include <string>
+#include <random>
 
 using namespace std;
 
-constexpr int SIZE = 2;
+const int SIZE = 2;
+const int ALPHABETSIZE = 26;
 
 class Substitution {
 public:
-	string* Encrypt();
-	string* Encrypt(string Key);
+	string* Encrypt(string message);
+	string* Encrypt(string Key, string message);
 	string Decrypt(string message[SIZE]);
 };
