@@ -1,5 +1,11 @@
 #include <iostream>
+#include "Substitution.h"
+#include "Caesar.h"
+#include "Matrix.h"
+#include "Transposition.h"
+
+using namespace std;
 
 int main() {
-	std::cout << "Hello World!\n";
+	cout << "Hello World!\n";
 }

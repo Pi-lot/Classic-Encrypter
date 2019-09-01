@@ -151,7 +151,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Caesar.cpp" />
     <ClCompile Include="Classic Encryption.cpp" />
+    <ClCompile Include="Matrix.cpp" />
+    <ClCompile Include="Substitution.cpp" />
+    <ClCompile Include="Transposition.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Caesar.h" />
+    <ClInclude Include="Matrix.h" />
+    <ClInclude Include="Substitution.h" />
+    <ClInclude Include="Transposition.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
