@@ -1,7 +1,11 @@
 #pragma once
-#include <iostream>
+#include <string>
 
 using namespace std;
 
 class Substitution {
+public:
+	string* Encrypt();
+	string* Encrypt(string Key);
+	string* Decrypt(string message);
 };
