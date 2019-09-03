@@ -24,7 +24,6 @@ void SubstitutionEncode() {
 	getline(cin, message);
 
 	cout << "Encrypting: " << message << endl;
-
 	Substitution sub;
 	string* result;
 
@@ -33,11 +32,15 @@ void SubstitutionEncode() {
 		key = result[0];
 		message = result[1];
 	} else {
+		cout << "Key: ";
 		getline(cin, key);
-		result = sub.Encrypt(key);
+		result = sub.Encrypt(key, message);
 	}
 
-	delete result;
+	cout << "Key: |" << key << "|" << endl;
+	cout << "Cipher Text: |" << message << "|" << endl;
+
+	delete[] result;
 }
 
 int main() {
