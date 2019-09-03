@@ -43,20 +43,31 @@ void SubstitutionEncode() {
 	delete[] result;
 }
 
+void SubstitutionDecode() {
+
+}
+
 int main() {
 	while (true) {
-		cout << "Which cipher do you wish to use? (Substitution, Transposition, Caesar, Hill)" << endl;
-		string cipher;
-		getline(cin, cipher);
-		for (int i = 0; i < cipher.length(); i++) {
-			cipher[i] = tolower(cipher[i]);
-		}
+		cout << "Which cipher do you wish to use? (Substitution - s, Transposition -t, Caesar - c, Hill - h, Exit - e)" << endl;
+		char cipher = getchar();
+		cipher = tolower(cipher);
 
-		if (cipher._Equal("exit"))
+		if (cipher == 'e')
 			break;
-		//run = false;
-	//else if (cipher._Equal("substitution"))
-		SubstitutionEncode();
+		else if (cipher == 's') {
+			cout << "Encode (e) or Decode (d)?" << endl;
+			getchar();
+			char ed = getchar();
+			getchar();
+			if (ed == 'e')
+				SubstitutionEncode();
+			else if (ed == 'd')
+				SubstitutionDecode();
+			else {
+				cout << "Wrong charater" << endl;
+			}
+		}
 	}
 	cout << "Exited" << endl;
 }
