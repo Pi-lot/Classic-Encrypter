@@ -7,7 +7,7 @@
 using namespace std;
 
 void SubstitutionEncode() {
-	cout << "Using Substitution Cipher" << endl << "Would you like to specify a key? (no or n if you don't know)" << endl;
+	cout << "Using Substitution Cipher Encode" << endl << "Would you like to specify a key (y or n)? (n if you don't know)" << endl;
 	string key;
 	getline(cin, key);
 	for (int i = 0; i < key.length(); i++) {
@@ -23,19 +23,20 @@ void SubstitutionEncode() {
 	cout << "Message to encrypt: ";
 	getline(cin, message);
 
-	cout << "Encrypting: " << message << endl;
 	Substitution sub;
 	string* result;
 
 	if (key._Equal("n") || key._Equal("no")) {
 		result = sub.Encrypt(message);
-		key = result[0];
-		message = result[1];
 	} else {
 		cout << "Key: ";
 		getline(cin, key);
 		result = sub.Encrypt(key, message);
+		//result = sub.Encrypt(message);
 	}
+
+	key = result[0];
+	message = result[1];
 
 	cout << "Key: |" << key << "|" << endl;
 	cout << "Cipher Text: |" << message << "|" << endl;
@@ -44,7 +45,23 @@ void SubstitutionEncode() {
 }
 
 void SubstitutionDecode() {
+	cout << "Using Substitution Cipher Decode" << endl << "Key: ";
+	string key;
+	getline(cin, key);
 
+	string message;
+	cout << "Message to decrypt: ";
+	getline(cin, message);
+
+	Substitution sub;
+	string plainText;
+	string messagea[2];
+	messagea[0] = key;
+	messagea[1] = message;
+
+	plainText = sub.Decrypt(messagea);
+	message = plainText;
+	cout << "Message reads: " << message << endl;
 }
 
 int main() {

@@ -13,9 +13,7 @@ const int ksize = sizeof(alphabet);
 
 class Substitution {
 public:
-	string* Encrypt(string message);
-	string* Encrypt(string Key, string message);
+	string *Encrypt(string message);
+	string *Encrypt(string Key, string message);
 	string Decrypt(string message[SIZE]);
-private:
-	char* key;
 };

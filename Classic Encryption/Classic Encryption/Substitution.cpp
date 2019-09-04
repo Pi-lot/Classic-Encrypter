@@ -13,9 +13,9 @@ bool InKey(int currentIndex, char key[]) {
 	return contains;
 }
 
-string* Substitution::Encrypt(string message) {
+string *Substitution::Encrypt(string message) {
 	random_device rand;
-	string* cipherText = new string[SIZE];
+	string *cipherText = new string[SIZE];
 	char key[ksize];
 	for (int i = 0; i < ksize; i++)
 		key[i] = NULL;
@@ -31,7 +31,7 @@ string* Substitution::Encrypt(string message) {
 		keys += key[i];
 	cipherText[0] = keys;
 	for (int i = 0; i < message.length(); i++) {
-		for (int j = 0; j < sizeof(key); j++) {
+		for (int j = 0; j < size(key); j++) {
 			if (message[i] == alphabet[j]) {
 				message[i] = key[j];
 				break;
@@ -42,20 +42,16 @@ string* Substitution::Encrypt(string message) {
 	return cipherText;
 }
 
-string* Substitution::Encrypt(string Key, string message) {
-	key = new char[ksize];
-	strcat_s(key, sizeof(key), Key.c_str());
-	while (sizeof(key) != ksize) {
-		cout << "Key size is invalid please input a key of correct size (" << ksize;
-		cout << " characters)" << endl;
-		getline(cin, Key);
-		strcpy_s(key, sizeof(key), Key.c_str());
+string *Substitution::Encrypt(string Key, string message) {
+	string key = Key;
+	while (key.length() != ksize) {
+		cout << "Incorrect key size. Input: " << key.length() << ". Required: " << ksize << endl;
+		getline(cin, key);
 	}
-	string cipherText[SIZE];
+	string *cipherText = new string[SIZE];
 	cipherText[0] = key;
-	delete[] key;
 	for (int i = 0; i < message.length(); i++) {
-		for (int j = 0; j < sizeof(key); j++) {
+		for (int j = 0; j < key.length(); j++) {
 			if (message[i] == alphabet[j]) {
 				message[i] = key[j];
 				break;
