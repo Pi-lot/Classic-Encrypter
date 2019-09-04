@@ -32,7 +32,6 @@ void SubstitutionEncode() {
 		cout << "Key: ";
 		getline(cin, key);
 		result = sub.Encrypt(key, message);
-		//result = sub.Encrypt(message);
 	}
 
 	key = result[0];
