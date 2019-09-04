@@ -6,6 +6,7 @@
 
 using namespace std;
 
+// Method for calling encryption using the substitution cipher
 void SubstitutionEncode() {
 	cout << "Using Substitution Cipher Encode" << endl << "Would you like to specify a key (y or n)? (n if you don't know)" << endl;
 	string key;
@@ -24,7 +25,7 @@ void SubstitutionEncode() {
 	getline(cin, message);
 
 	Substitution sub;
-	string* result;
+	string *result;
 
 	if (key._Equal("n") || key._Equal("no")) {
 		result = sub.Encrypt(message);
@@ -43,6 +44,7 @@ void SubstitutionEncode() {
 	delete[] result;
 }
 
+// Method for calling the decryption using the substitution cipher
 void SubstitutionDecode() {
 	cout << "Using Substitution Cipher Decode" << endl << "Key: ";
 	string key;
@@ -58,8 +60,7 @@ void SubstitutionDecode() {
 	messagea[0] = key;
 	messagea[1] = message;
 
-	plainText = sub.Decrypt(messagea);
-	message = plainText;
+	message = sub.Decrypt(messagea);
 	cout << "Message reads: " << message << endl;
 }
 
@@ -69,6 +70,7 @@ int main() {
 		char cipher = getchar();
 		cipher = tolower(cipher);
 
+		// CLI Navigation
 		if (cipher == 'e')
 			break;
 		else if (cipher == 's') {
