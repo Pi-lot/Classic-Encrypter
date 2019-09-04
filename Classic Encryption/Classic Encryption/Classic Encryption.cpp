@@ -64,9 +64,33 @@ void SubstitutionDecode() {
 	cout << "Message reads: " << message << endl;
 }
 
+void TranspositionEncode() {
+
+}
+
+void TranspositionDecode() {
+
+}
+
+void CeasarEncode() {
+
+}
+
+void CeasarDecode() {
+
+}
+
+void HillEncode() {
+
+}
+
+void HillDecode() {
+
+}
+
 int main() {
 	while (true) {
-		cout << "Which cipher do you wish to use? (Substitution - s, Transposition -t, Caesar - c, Hill - h, Exit - e)" << endl;
+		cout << "Which cipher do you wish to use? (Substitution - s, Transposition -t, Ceasar - c, Hill - h, Exit - e)" << endl;
 		char cipher = getchar();
 		cipher = tolower(cipher);
 
@@ -82,6 +106,42 @@ int main() {
 				SubstitutionEncode();
 			else if (ed == 'd')
 				SubstitutionDecode();
+			else {
+				cout << "Wrong charater" << endl;
+			}
+		} else if (cipher == 't') {
+			cout << "Encode (e) or Decode (d)?" << endl;
+			getchar();
+			char ed = getchar();
+			getchar();
+			if (ed == 'e')
+				TranspositionEncode();
+			else if (ed == 'd')
+				TranspositionDecode();
+			else {
+				cout << "Wrong charater" << endl;
+			}
+		} else if (cipher == 'c') {
+			cout << "Encode (e) or Decode (d)?" << endl;
+			getchar();
+			char ed = getchar();
+			getchar();
+			if (ed == 'e')
+				CeasarEncode();
+			else if (ed == 'd')
+				CeasarDecode();
+			else {
+				cout << "Wrong charater" << endl;
+			}
+		} else if (cipher == 'h') {
+			cout << "Encode (e) or Decode (d)?" << endl;
+			getchar();
+			char ed = getchar();
+			getchar();
+			if (ed == 'e')
+				HillEncode();
+			else if (ed == 'd')
+				HillDecode();
 			else {
 				cout << "Wrong charater" << endl;
 			}
