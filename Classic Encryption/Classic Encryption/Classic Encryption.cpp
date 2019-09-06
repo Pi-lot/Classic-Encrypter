@@ -8,16 +8,17 @@ using namespace std;
 
 // Method for calling encryption using the substitution cipher
 void SubstitutionEncode() {
-	cout << "Using Substitution Cipher Encode" << endl << "Would you like to specify a key (y or n)? (n if you don't know)" << endl;
+	cout << "Using Substitution Cipher Encode" << endl <<
+		"Would you like to specify a key (y or n)? (n if you don't know)" << endl;
 	string key;
 	getline(cin, key);
 	for (int i = 0; i < key.length(); i++) {
 		key[i] = tolower(key[i]);
 	}
 
-	if (!key._Equal("n") && !key._Equal("no") && !key._Equal("y") && !key._Equal("yes")) {
+	while (!key._Equal("n") && !key._Equal("no") && !key._Equal("y") && !key._Equal("yes")) {
 		cout << "Didn't recongise that input" << endl;
-		SubstitutionEncode();
+		getline(cin, key);
 	}
 
 	string message;
@@ -72,11 +73,61 @@ void TranspositionDecode() {
 
 }
 
-void CeasarEncode() {
+bool isInt(string key) {
+	char ints[] = { '0','1','2','3','4','5','6','7','8','9' };
+	int intchars = 0;
+	for (int i = 0; i < key.length(); i++) {
+		for (int j = 0; j < size(ints); j++) {
+			if (key[i] == ints[j])
+				intchars++;
+		}
+	}
 
+	return (intchars == key.length());
 }
 
-void CeasarDecode() {
+void CaesarEncode() {
+	cout << "Using Caesar Cipher Encode." << endl <<
+		"Would you like to specify a key (y or n)? (n if you don't know)" << endl;
+	string key;
+	getline(cin, key);
+	for (int i = 0; i < key.length(); i++) {
+		key[i] = tolower(key[i]);
+	}
+
+	while (!key._Equal("n") && !key._Equal("no") && !key._Equal("y") && !key._Equal("yes")) {
+		cout << "Didn't recongise that input" << endl;
+		getline(cin, key);
+	}
+
+	Caesar cae;
+	string result;
+
+	if (key._Equal("n") || key._Equal("no")) {
+		cae.RandomiseKey();
+	} else {
+		cout << "Key: ";
+		do {
+			getline(cin, key);
+			if (!isInt(key))
+				cout << "Invalid input. Try again: ";
+		} while (!isInt(key));
+		int Key = stoi(key, nullptr, 10);
+		cae.SetKey(Key);
+	}
+
+	string message;
+	cout << "Message to encrypt: ";
+	getline(cin, message);
+
+	result = cae.Encrypt(message);
+	message = result;
+
+	cout << "Key: " << cae.GetKey() << endl;
+	cout << "Cipher Text = |" << message << "|" << endl;
+}
+
+void CaesarDecode() {
 
 }
 
@@ -127,9 +178,9 @@ int main() {
 			char ed = getchar();
 			getchar();
 			if (ed == 'e')
-				CeasarEncode();
+				CaesarEncode();
 			else if (ed == 'd')
-				CeasarDecode();
+				CaesarDecode();
 			else {
 				cout << "Wrong charater" << endl;
 			}
