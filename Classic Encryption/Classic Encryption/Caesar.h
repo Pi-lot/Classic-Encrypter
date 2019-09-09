@@ -11,7 +11,7 @@ const char ALPHABET[] = { 'a','b','c','d','e','f','g','h','i','j','k','l','m','n
 class Caesar {
 public:
 	string Encrypt(string message);
-	string Decrypt(string key, string message);
+	string Decrypt(string message);
 	void SetKey(int Key);
 	void RandomiseKey();
 	int GetKey();

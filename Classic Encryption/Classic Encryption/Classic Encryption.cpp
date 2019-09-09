@@ -128,7 +128,29 @@ void CaesarEncode() {
 }
 
 void CaesarDecode() {
+	cout << "Using Caesar Cipher Decode." << endl;
+	string key;
+	Caesar cae;
+	string result;
 
+	cout << "Key: ";
+	do {
+		getline(cin, key);
+		if (!isInt(key))
+			cout << "Invalid input. Try again: ";
+	} while (!isInt(key));
+	int Key = stoi(key, nullptr, 10);
+	cae.SetKey(Key);
+
+	string message;
+	cout << "Message to decrypt: ";
+	getline(cin, message);
+
+	result = cae.Decrypt(message);
+	message = result;
+
+	cout << "Key: " << cae.GetKey() << endl;
+	cout << "Cipher Text = |" << message << "|" << endl;
 }
 
 void HillEncode() {
