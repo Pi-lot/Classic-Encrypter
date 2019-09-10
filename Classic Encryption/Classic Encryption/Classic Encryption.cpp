@@ -163,7 +163,7 @@ void HillDecode() {
 
 int main() {
 	while (true) {
-		cout << "Which cipher do you wish to use? (Substitution - s, Transposition -t, Ceasar - c, Hill - h, Exit - e)" << endl;
+		cout << "Which cipher do you wish to use? (Substitution - s, Transposition -t, Caesar - c, Hill - h, Exit - e)" << endl;
 		char cipher = getchar();
 		cipher = tolower(cipher);
 
