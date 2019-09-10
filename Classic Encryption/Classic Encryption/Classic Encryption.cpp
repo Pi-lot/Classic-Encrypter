@@ -65,14 +65,6 @@ void SubstitutionDecode() {
 	cout << "Message reads: " << message << endl;
 }
 
-void TranspositionEncode() {
-
-}
-
-void TranspositionDecode() {
-
-}
-
 bool isInt(string key) {
 	char ints[] = { '0','1','2','3','4','5','6','7','8','9' };
 	int intchars = 0;
@@ -84,6 +76,66 @@ bool isInt(string key) {
 	}
 
 	return (intchars == key.length());
+}
+
+void TranspositionEncode() {
+	cout << "Using Transposition Cipher Encode." << endl <<
+		"Would you like to specify a key (y or n)? (n if you don't know)" << endl;
+	string key;
+	getline(cin, key);
+	for (int i = 0; i < key.length(); i++) {
+		key[i] = tolower(key[i]);
+	}
+
+	while (!key._Equal("n") && !key._Equal("no") && !key._Equal("y") && !key._Equal("yes")) {
+		cout << "Didn't recongise that input" << endl;
+		getline(cin, key);
+	}
+
+	Transposition tra;
+	Transposition::MessageInfo result;
+
+	if (key._Equal("n") || key._Equal("no")) {
+		result.key = NULL;
+		result.period = NULL;
+	} else {
+		cout << "Period: ";
+		do {
+			getline(cin, key);
+			if (!isInt(key))
+				cout << "Invalid input. Try again: ";
+		} while (!isInt(key));
+		int Key = stoi(key, nullptr, 10);
+		result.period = Key;
+		result.key = new int[Key];
+		for (int i = 0; i < result.period; i++) {
+			cout << "Key element " << i << ": ";
+			do {
+				getline(cin, key);
+				if (!isInt(key))
+					cout << "Invalid input. Try again: ";
+			} while (!isInt(key));
+			int Key = stoi(key, nullptr, 10);
+			result.key[i] = Key;
+		}
+	}
+	cout << "Message to encrypt: ";
+	getline(cin, result.message);
+
+	result = tra.Encrypt(result);
+	cout << "Key: "; 
+	for (int i = 0; i < result.period; i++) {
+		cout << result.key[i];
+		if (i != result.period - 1)
+			cout << ",";
+	}
+	cout << endl;
+	delete[] result.key;
+	cout << "Cipher Text = |" << result.message << "|" << endl;
+}
+
+void TranspositionDecode() {
+
 }
 
 void CaesarEncode() {

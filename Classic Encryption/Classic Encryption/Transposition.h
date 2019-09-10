@@ -11,7 +11,7 @@ public:
 		int period;
 		string message;
 	};
-	MessageInfo Encode(MessageInfo message);
-	string Decode(MessageInfo message);
+	MessageInfo Encrypt(MessageInfo message);
+	string Decrypt(MessageInfo message);
 };
 
