@@ -123,7 +123,7 @@ void TranspositionEncode() {
 
 	result = tra.Encrypt(result);
 	cout << "Period: " << result.period << endl;
-	cout << "Key: "; 
+	cout << "Key: ";
 	for (int i = 0; i < result.period; i++) {
 		cout << result.key[i];
 		if (i != result.period - 1)
@@ -141,43 +141,30 @@ void TranspositionDecode() {
 	Transposition tra;
 	Transposition::MessageInfo result;
 
-	if (key._Equal("n") || key._Equal("no")) {
-		result.period = NULL;
-	} else {
-		cout << "Period: ";
+	cout << "Period: ";
+	do {
+		getline(cin, key);
+		if (!isInt(key))
+			cout << "Invalid input. Try again: ";
+	} while (!isInt(key));
+	int Key = stoi(key, nullptr, 10);
+	result.period = Key;
+	result.key = new int[Key];
+	for (int i = 0; i < result.period; i++) {
+		cout << "Key element " << i << ": ";
 		do {
 			getline(cin, key);
 			if (!isInt(key))
 				cout << "Invalid input. Try again: ";
 		} while (!isInt(key));
 		int Key = stoi(key, nullptr, 10);
-		result.period = Key;
-		result.key = new int[Key];
-		for (int i = 0; i < result.period; i++) {
-			cout << "Key element " << i << ": ";
-			do {
-				getline(cin, key);
-				if (!isInt(key))
-					cout << "Invalid input. Try again: ";
-			} while (!isInt(key));
-			int Key = stoi(key, nullptr, 10);
-			result.key[i] = Key;
-		}
+		result.key[i] = Key;
 	}
-	cout << "Message to encrypt: ";
+	cout << "Message to decrypt: ";
 	getline(cin, result.message);
 
-	result = tra.Encrypt(result);
-	cout << "Period: " << result.period << endl;
-	cout << "Key: ";
-	for (int i = 0; i < result.period; i++) {
-		cout << result.key[i];
-		if (i != result.period - 1)
-			cout << ",";
-	}
-	cout << endl;
-	delete[] result.key;
-	cout << "Cipher Text = |" << result.message << "|" << endl;
+	string plain = tra.Decrypt(result);
+	cout << "Plain Text = |" << plain << "|" << endl;
 }
 
 void CaesarEncode() {

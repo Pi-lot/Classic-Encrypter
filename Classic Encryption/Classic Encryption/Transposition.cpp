@@ -42,9 +42,15 @@ Transposition::MessageInfo Transposition::Encrypt(MessageInfo message) {
 
 string Transposition::Decrypt(MessageInfo message) {
 	string m = "";
+	int *dkey = new int[message.period];
+	for (int i = 0; i < message.period; i++)
+		for (int j = 0; j < message.period; j++)
+			if (message.key[j] == i)
+				dkey[i] = j;
 	for (int i = 0; i < message.message.length(); i += message.period)
 		for (int j = 0; j < message.period; j++)
-			m += message.message[message.key[j]];
+			m += message.message[i + dkey[j]];
 	delete[] message.key;
-	return message.message;
+	delete[] dkey;
+	return m;
 }
