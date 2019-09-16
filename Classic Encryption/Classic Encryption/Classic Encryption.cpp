@@ -6,7 +6,6 @@
 
 using namespace std;
 
-// Method for calling encryption using the substitution cipher
 void SubstitutionEncode() {
 	cout << "Using Substitution Cipher Encode" << endl <<
 		"Would you like to specify a key (y or n)? (n if you don't know)" << endl;
@@ -45,7 +44,6 @@ void SubstitutionEncode() {
 	delete[] result;
 }
 
-// Method for calling the decryption using the substitution cipher
 void SubstitutionDecode() {
 	cout << "Using Substitution Cipher Decode" << endl << "Key: ";
 	string key;
@@ -65,6 +63,7 @@ void SubstitutionDecode() {
 	cout << "Message reads: " << message << endl;
 }
 
+// Check that the input is able to be converted to a integer
 bool isInt(string key) {
 	char ints[] = { '0','1','2','3','4','5','6','7','8','9' };
 	int intchars = 0;

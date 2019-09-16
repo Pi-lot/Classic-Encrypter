@@ -15,6 +15,7 @@ bool InKey(int num, int period, int current, int key[]) {
 }
 
 Transposition::MessageInfo Transposition::Encrypt(MessageInfo message) {
+	// if a key/period isn't specified randomly generate one
 	if (message.period == NULL) {
 		random_device rd;
 		do {
@@ -32,6 +33,7 @@ Transposition::MessageInfo Transposition::Encrypt(MessageInfo message) {
 			} while (InKey(num, message.period, i, message.key));
 		}
 	}
+	// Encrypt message then return.
 	string m = "";
 	for (int i = 0; i < message.message.length(); i += message.period)
 		for (int j = 0; j < message.period; j++)
@@ -42,15 +44,17 @@ Transposition::MessageInfo Transposition::Encrypt(MessageInfo message) {
 
 string Transposition::Decrypt(MessageInfo message) {
 	string m = "";
+	// Get the decryption key from the encryption key (the two are different)
 	int *dkey = new int[message.period];
 	for (int i = 0; i < message.period; i++)
 		for (int j = 0; j < message.period; j++)
 			if (message.key[j] == i)
 				dkey[i] = j;
+	// Decrypt the message and return
 	for (int i = 0; i < message.message.length(); i += message.period)
 		for (int j = 0; j < message.period; j++)
 			m += message.message[i + dkey[j]];
-	delete[] message.key;
+	delete[] message.key; // free memory
 	delete[] dkey;
 	return m;
 }

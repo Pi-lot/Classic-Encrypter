@@ -10,7 +10,7 @@ public:
 		int *key;
 		int period;
 		string message;
-	};
+	}; // Used to store encryption information
 	MessageInfo Encrypt(MessageInfo message);
 	string Decrypt(MessageInfo message);
 };
