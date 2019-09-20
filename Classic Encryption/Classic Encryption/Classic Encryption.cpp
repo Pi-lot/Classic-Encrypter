@@ -81,7 +81,14 @@ void CeasarDecode() {
 }
 
 void HillEncode() {
-
+	Matrix hill;
+	int *key = new int[4];
+	key[0] = 5;
+	key[1] = 4;
+	key[2] = 3;
+	key[3] = 6;
+	string cipherText;
+	cout << "|" << hill.Encrypt(key, 4, "Testing") << "|" << endl;
 }
 
 void HillDecode() {
